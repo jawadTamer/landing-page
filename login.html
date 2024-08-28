@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="login">
+    <div class="container">
+      <h2>Login</h2>
+      <form>
+        <label for="email">Email:</label>
+        <div class="email-container">
+          <input type="email" id="email" name="email" required />
+        </div>
+        <label for="password">Password:</label>
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder=""
+            required
+          />
+          <i class="ri-eye-off-line icon"></i>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+    <script>
+      document
+        .querySelector(".login form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          const users = JSON.parse(localStorage.getItem("users")) || [];
+
+          const user = users.find(
+            (user) => user.email === email && user.password === password
+          );
+
+          if (user) {
+            swal(`Welcome back, ${user.username}!`);
+          } else {
+            swal("Invalid email or password. Please try again.");
+          }
+        });
+
+      const input = document.getElementById("password");
+      const icon = document.querySelector(".icon");
+
+      icon.addEventListener("click", () => {
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("ri-eye-off-line");
+          icon.classList.add("ri-eye-line");
+        } else {
+          input.type = "password";
+          icon.classList.remove("ri-eye-line");
+          icon.classList.add("ri-eye-off-line");
+        }
+      });
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+</html>
