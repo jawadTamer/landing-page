@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="profile">
+    <div class="container mt-5">
+      <div class="card p-4 shadow">
+        <h2 class="mb-4 text-center">Profile</h2>
+        <div id="userInfo"></div>
+        <button id="logoutButton" class="btn btn-danger btn-block mt-3">
+          Logout
+        </button>
+      </div>
+    </div>
+    <script>
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("userInfo").innerHTML = `
+                <p><strong>Username:</strong> ${user.username}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+            `;
+      }
+
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+          localStorage.removeItem("currentUser");
+          window.location.href = "login.html";
+        });
+    </script>
+  </body>
+</html>

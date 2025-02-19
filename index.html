@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home">
+    <div class="container text-center mt-5">
+      <div class="card p-4 shadow">
+        <h2 class="mb-4">Hello, Welcome!</h2>
+        <p class="mb-4">Welcome To Our Page.</p>
+        <div class="d-flex justify-content-center">
+          <button type="button" id="loginButton" class="btn btn-primary mr-2">
+            Login
+          </button>
+          <button type="button" id="signupButton" class="btn btn-secondary">
+            Signup
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function () {
+          window.location.href = "login.html";
+        });
+
+      document
+        .getElementById("signupButton")
+        .addEventListener("click", function () {
+          window.location.href = "signup.html";
+        });
+    </script>
+  </body>
+</html>
